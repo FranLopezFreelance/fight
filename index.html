@@ -1,0 +1,52 @@
+<script type="text/javascript">
+
+var luchador1 = {
+	nombre: "",
+	vida: 0,
+	ataque: 0
+}
+
+var luchador2 = {
+	nombre: "",
+	vida: 0,
+	ataque: 0
+}
+
+var luchadores = [luchador1, luchador2];
+var turno = 0;
+
+alert("Para empezar ingresa los datos del primer luchador!");
+
+for(i=0; i<2; i++){
+	if(i>0){alert("Muy Bien. Ingresa los datos del segundo luchador!");}
+	luchadores[i].nombre = prompt("Su nombre:");
+	luchadores[i].vida = prompt("Puntos de vida:");
+	luchadores[i].ataque = prompt("Puntos de ataque:");
+}
+
+document.write("Empieza la pelea:<br />"); 
+
+while(luchador1.vida > 0 && luchador2.vida >0){
+	document.write("Es el turno de " + luchadores[turno].nombre + "...   PUM!<br />");
+	if(turno == 0){
+		luchadores[1].vida = luchadores[1].vida - luchadores[0].ataque;
+		if(luchadores[1].vida > 0){
+			document.write(" - A " + luchadores[1].nombre + " le quedan " + luchadores[1].vida  + " puntos de vida<br />"); 
+		}else{
+			document.write(luchadores[1].nombre + " ha muerto<br />");
+			document.write(luchadores[0].nombre + " ha ganado!!");		
+		} 
+		turno = 1;
+	}else{
+		luchadores[0].vida = luchadores[0].vida - luchadores[1].ataque;
+		if(luchadores[0].vida > 0){
+			document.write(" - A " + luchadores[0].nombre + " le quedan " + luchadores[0].vida  + " puntos de vida<br />"); 
+		}else{
+			document.write(luchadores[0].nombre + " ha muerto<br />");
+			document.write(luchadores[1].nombre + " ha ganado!!");				
+		}
+		turno = 0;
+	}	
+}
+
+</script>
